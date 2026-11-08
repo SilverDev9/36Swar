@@ -12,7 +12,10 @@ import { notFound, errorHandler } from "./src/middleware/errorMiddleware.js";
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173" }));
+app.use(cors({ 
+             origin: process.env.CLIENT_URL,
+             credentials:true,            //access-control-allow-credentials:true
+             optionSuccessStatus:200}));
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: true }));
 
